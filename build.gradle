@@ -40,6 +40,9 @@ dependencies{
 task jarAndroid{
     dependsOn "jar"
 
+    println "SDK: $sdkRoot"
+    if(sdkRoot != null) println new File(sdkRoot).list()
+
 	doLast{
         //collect dependencies needed for desugaring
         def files = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")])
