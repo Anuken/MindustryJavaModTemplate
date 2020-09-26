@@ -1,11 +1,12 @@
 # ExampleJavaMod
 A prototype Java Mindustry mod that works on Android and PC.
 
-## Compiling for Desktop Testing
+## Building for Desktop Testing
 
 1. Install JDK 14. If you don't know how, look it up. If you already have any version of the JDK >= 8, that works as well. 
 2. Run `gradlew jar` [1].
 3. Your mod jar will be in the `build/libs` directory. **Only use this version for testing on desktop. It will not work with Android.**
+To build an Android-compatible version, you need the Android SDK. You can either let Github Actions handle this, or set it up yourself. See steps below.
 
 ## Building through Github Actions
 
