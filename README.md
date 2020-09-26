@@ -5,7 +5,7 @@ A prototype Java Mindustry mod that works on Android and PC.
 
 1. Install JDK 14. If you don't know how, look it up. If you already have any version of the JDK >= 8, that works as well. 
 2. Run `gradlew jar` [1].
-3. Your mod jar will be in the `build/libs` directory. **Only use this version for testing on desktop. It will not work with Android.**
+3. Your mod jar will be in the `build/libs` directory.
 
 ## Building through Github Actions
 
