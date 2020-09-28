@@ -41,21 +41,21 @@ dependencies{
 task jarAndroid{
     dependsOn "jar"
 
-	doLast{
+    doLast{
         //collect dependencies needed for desugaring
         def files = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")])
-        def dependencies = files.collect{ "--classpath $it.path"}.join(" ")
+        def dependencies = files.collect{ "--classpath $it.path" }.join(" ")
 
         //dex and desugar files - this requires d8 in your PATH
         doExec("d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar")
-	}
+    }
 }
 
 jar{
     archiveFileName = "${project.archivesBaseName}Desktop.jar"
 
     from{
-        configurations.runtimeClasspath.collect{it.isDirectory() ? it : zipTree(it)}
+        configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
     }
 
     from(rootDir){
