@@ -15,7 +15,18 @@ import mindustry.type.*;
 public class ExampleJavaMod extends Mod{
 
     public ExampleJavaMod(){
-        
+         try{
+        	new TestCustomGameDialog().init();
+        }catch(NoSuchFieldException e){
+        	e.printStackTrace();
+        }catch(SecurityException e){
+        	e.printStackTrace();
+        }catch(IllegalArgumentException e){
+        	e.printStackTrace();
+        }catch(IllegalAccessException e){
+        	e.printStackTrace();
+        }
+	}
     }
 
     @Override
