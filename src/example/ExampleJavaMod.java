@@ -15,7 +15,13 @@ import mindustry.type.*;
 public class ExampleJavaMod extends Mod{
 
     public ExampleJavaMod(){
-         try{
+         
+    }
+
+    @Override
+    public void loadContent(){
+
+        try{
         	new TestCustomGameDialog().init();
         }catch(NoSuchFieldException e){
         	e.printStackTrace();
@@ -27,16 +33,6 @@ public class ExampleJavaMod extends Mod{
         	e.printStackTrace();
         }
 	}
-    }
-
-    @Override
-    public void loadContent(){
-
-        new Item("cckpr", Color.valueOf("d99d73")){{
-            hardness = 1;
-            cost = 0.5f;
-            alwaysUnlocked = true;
-        }};
     }
 
 }
