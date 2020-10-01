@@ -31,7 +31,7 @@ public class ExampleJavaMod extends Mod{
         	e.printStackTrace();
         }catch(IllegalAccessException e){
         	e.printStackTrace();
-        }
+        
 	}
     }
 
