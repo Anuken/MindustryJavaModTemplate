@@ -1,0 +1,23 @@
+{
+  "name": "examplejavamod",
+  "version": "1.0.0",
+  "description": "Mindustry Example Java Mod",
+  "main": "src/example/ExampleJavaMod.java",
+  "scripts": {
+    "desktop build": "gradlew jar",
+    "android build": "gradlew deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anuken/ExampleJavaMod.git"
+  },
+  "keywords": [
+    "Mindustry"
+  ],
+  "author": "Anuken",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anuken/ExampleJavaMod/issues"
+  },
+  "homepage": "https://github.com/Anuken/ExampleJavaMod#readme"
+}
