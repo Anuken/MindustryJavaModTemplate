@@ -2,6 +2,7 @@ package example.core;
 
 import arc.*;
 import arc.util.*;
+import example.content.ExampleContentList;
 import mindustry.game.EventType.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
@@ -27,7 +28,8 @@ public class ExampleJavaMod extends Mod{
 
     @Override
     public void loadContent(){
-		Log.info("Loading some example content.");
+        Log.info("Loading some example content.");
+        new ExampleContentList().load();
     }
 
 }
