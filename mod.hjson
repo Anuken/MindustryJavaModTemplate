@@ -1,7 +1,7 @@
 name: "example-java-mod"
 displayName: "Example Java Mod"
 author: "Anuke"
-main: "example.ExampleJavaMod"
+main: "example.core.ExampleJavaMod"
 description: "A jar mod."
 version: 1.0
 minGameVersion: 105
