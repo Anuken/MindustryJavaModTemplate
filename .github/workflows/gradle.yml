@@ -7,11 +7,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+    - name: Install Android SDK
+      uses: android-actions/setup-android@v2.0.1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Set up PATH
-      run: |
-        echo "::add-path::${ANDROID_HOME}/build-tools/30.0.1"
-        echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')
+      run: | 
+        echo "${ANDROID_HOME}/build-tools/30.0.1" >> $GITHUB_PATH
+        echo "REPOSITORY_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')" >> $GITHUB_ENV
     - name: Set up JDK 14
       uses: actions/setup-java@v1
       with:
