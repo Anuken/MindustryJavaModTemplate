@@ -13,7 +13,7 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Set up PATH
-      run: | 
+      run: |
         echo "${ANDROID_HOME}/build-tools/30.0.1" >> $GITHUB_PATH
         echo "REPOSITORY_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}')" >> $GITHUB_ENV
     - name: Set up JDK 14
