@@ -1,5 +1,5 @@
 # ExampleJavaMod
-A prototype Java Mindustry mod that works on Android and PC.
+A Java Mindustry mod that works on Android and PC. The Kotlin version of this mod can be seen [here](https://github.com/Anuken/ExampleKotlinMod).
 
 ## Building for Desktop Testing
 
