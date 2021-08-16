@@ -1,8 +1,21 @@
+#the mod name as displayed in-game
+displayName: "Java Mod Template"
+
+#the internal name of your mod
 name: "example-java-mod"
-displayName: "Example Java Mod"
-author: "Anuke"
+
+#your name
+author: "You"
+
+#the fully qualified main class of the mod
 main: "example.ExampleJavaMod"
-description: "A jar mod."
+
+#the mod description as seen in the mod dialog
+description: "A Mindustry Java mod template."
+
+#the mod version
 version: 1.0
-minGameVersion: 128
+
+#the minimum game build required to run this mod
+minGameVersion: 129
 
