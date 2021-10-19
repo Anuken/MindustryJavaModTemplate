@@ -1,6 +1,6 @@
-name: Java CI
+name: Pull Request Testing
 
-on: [push]
+on: [pull_request]
 
 jobs:
   buildJar:
@@ -20,5 +20,5 @@ jobs:
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ github.event.repository.name }}
+        name: ${{ github.event.repository.name }} Pull Request
         path: build/libs/${{ github.event.repository.name }}.jar
