@@ -1,13 +1,13 @@
-name: Java CI
+name: Pull Request Testing
 
-on: [push]
+on: [pull_request]
 
 jobs:
   buildJar:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Set up PATH
       run: |
         echo "${ANDROID_HOME}/build-tools/30.0.1" >> $GITHUB_PATH
@@ -20,5 +20,5 @@ jobs:
     - name: Upload built jar file
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ github.event.repository.name }}
+        name: ${{ github.event.repository.name }} Pull Request
         path: build/libs/${{ github.event.repository.name }}.jar
