@@ -14,10 +14,10 @@ main: "example.ExampleJavaMod"
 description: "A Mindustry Java mod template."
 
 #the mod version
-version: 1.0
+version: 6.666
 
 #the minimum game build required to run this mod
-minGameVersion: 129
+minGameVersion: 139
 
 #this is a java mod
 java: true
