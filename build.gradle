@@ -95,8 +95,8 @@ task deploy(type: Jar){
 task moveDesktop doFirst{
     exec{
         workingDir "$buildDir"
+        println "Moving ${project.archivesBaseName} to the mods folder..."
         if(System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("windows")){
-            println "Yeeting ${project.archivesBaseName} to the shadow realm..."
             commandLine("cmd", "/C", "move", "/Y", "libs\\${project.archivesBaseName}Desktop.jar", "%userprofile%\\AppData\\Roaming\\Mindustry\\mods")
         }else{
             println "This task was made only for Windows. If you are a mac user, please PR the proper command to move the compiled mod to the mods folder."
