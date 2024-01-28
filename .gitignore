@@ -45,6 +45,7 @@ version.properties
 *.ear
 hs_err_pid*
 crash-report-*
+replay_pid*
 
 ## Robovm
 /ios/robovm-build/
