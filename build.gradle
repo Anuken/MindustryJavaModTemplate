@@ -75,7 +75,7 @@ jar{
         configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
     }
 
-    from(rootDir){
+    from(projectDir){
         include "mod.hjson"
     }
 
