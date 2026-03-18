@@ -7,7 +7,20 @@ sourceSets.main.java.srcDirs = ["src"]
 repositories{
     mavenCentral()
     maven{ url = "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository" }
-    maven{ url = 'https://www.jitpack.io' }
+
+    //Downloads the server-release JAR file from Mindustry releases; does not use any real repository. Surprisingly, this is the most reliable option.
+    ivy{
+        url 'https://github.com/'
+        patternLayout{artifact '/[organisation]/[module]/releases/download/[revision]/server-release.jar'}
+        metadataSources{ artifact() }
+    }
+
+    //Do the same with jabel
+    ivy{
+        url 'https://github.com/'
+        patternLayout{artifact '/[organisation]/[module]/releases/download/[revision]/jabel.jar'}
+        metadataSources{ artifact() }
+    }
 }
 
 java{
@@ -33,19 +46,9 @@ allprojects{
 }
 
 dependencies{
-    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    compileOnly "Anuken:Mindustry:$mindustryVersion"
 
-    annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
-}
-
-//force arc version
-configurations.configureEach{
-    resolutionStrategy.eachDependency { details ->
-        if(details.requested.group == 'com.github.Anuken.Arc'){
-            details.useVersion "$mindustryVersion"
-        }
-    }
+    annotationProcessor "Anuken:jabel:v1.0.0"
 }
 
 tasks.register('jarAndroid'){
