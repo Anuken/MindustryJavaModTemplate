@@ -14,6 +14,13 @@ repositories{
         metadataSources{ artifact() }
     }
 
+    //"Latest" option to depend on BE builds.
+    ivy{
+        url 'https://github.com/'
+        patternLayout{artifact '/[organisation]/[module]/releases/download/master/[revision].jar'}
+        metadataSources{ artifact() }
+    }
+
     //Do the same with jabel
     ivy{
         url 'https://github.com/'
@@ -28,8 +35,7 @@ java{
 }
 
 ext{
-    //the build number that this mod is made for
-    mindustryVersion = 'v155.4'
+    mindustryVersion = 'v155.4' //the build number that this mod is made for
     jabelVersion = "93fde537c7"
     isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
@@ -45,7 +51,9 @@ allprojects{
 }
 
 dependencies{
-    compileOnly "Anuken:Mindustry:$mindustryVersion"
+    def useLatest = false //set to "true" to always depend on the newest version of mindustry
+
+    compileOnly useLatest ? "Anuken:MindustryBuilds:latest" : "Anuken:Mindustry:$mindustryVersion"
 
     annotationProcessor "Anuken:jabel:v1.0.0"
 }
