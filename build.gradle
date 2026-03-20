@@ -10,7 +10,7 @@ repositories{
     //Downloads the server-release JAR file from Mindustry releases; does not use any real repository. Surprisingly, this is the most reliable option.
     ivy{
         url 'https://github.com/'
-        patternLayout{artifact '/[organisation]/[module]/releases/download/[revision]/server-release.jar'}
+        patternLayout{artifact '/[organisation]/[module]/releases/download/[revision]/dependencies.jar'}
         metadataSources{ artifact() }
     }
 
