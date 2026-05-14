@@ -7,7 +7,7 @@ sourceSets.main.java.srcDirs = ["src"]
 repositories{
     mavenCentral()
 
-    //Downloads the server-release JAR file from Mindustry releases; does not use any real repository. Surprisingly, this is the most reliable option.
+    //Downloads the dependencies JAR file from Mindustry releases; does not use any real repository. Surprisingly, this is the most reliable option.
     ivy{
         url 'https://github.com/'
         patternLayout{artifact '/[organisation]/[module]/releases/download/[revision]/dependencies.jar'}
