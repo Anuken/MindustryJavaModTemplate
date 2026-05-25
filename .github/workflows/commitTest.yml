@@ -20,7 +20,8 @@ jobs:
         chmod +x ./gradlew
         ./gradlew deploy
     - name: Upload built jar file
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
+        archive: false
         name: ${{ github.event.repository.name }}
         path: build/libs/${{ github.event.repository.name }}.jar
