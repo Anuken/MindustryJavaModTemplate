@@ -9,34 +9,26 @@ repositories{
 
     //Downloads the dependencies JAR file from Mindustry releases; does not use any real repository. Surprisingly, this is the most reliable option.
     ivy{
-        url 'https://github.com/'
+        url = 'https://github.com/'
         patternLayout{artifact '/[organisation]/[module]/releases/download/[revision]/dependencies.jar'}
         metadataSources{ artifact() }
     }
 
     //"Latest" option to depend on BE builds.
     ivy{
-        url 'https://github.com/'
+        url = 'https://github.com/'
         patternLayout{artifact '/[organisation]/[module]/releases/download/master/[revision].jar'}
-        metadataSources{ artifact() }
-    }
-
-    //Do the same with jabel
-    ivy{
-        url 'https://github.com/'
-        patternLayout{artifact '/[organisation]/[module]/releases/download/[revision]/jabel.jar'}
         metadataSources{ artifact() }
     }
 }
 
 java{
-    targetCompatibility = 8
+    targetCompatibility = JavaVersion.VERSION_17
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
 ext{
     mindustryVersion = 'v158.1' //the build number that this mod is made for
-    jabelVersion = "93fde537c7"
     isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
 }
@@ -54,12 +46,11 @@ dependencies{
     def useLatest = false //set to "true" to always depend on the newest version of mindustry
 
     compileOnly useLatest ? "Anuken:MindustryBuilds:latest" : "Anuken:Mindustry:$mindustryVersion"
-
-    annotationProcessor "Anuken:jabel:v1.0.0"
 }
 
 tasks.register('jarAndroid'){
     dependsOn "jar"
+    def projectName = project.name
 
     doLast{
         if(!sdkRoot || !new File(sdkRoot).exists()) throw new GradleException("No valid Android SDK found. Ensure that ANDROID_HOME is set to your Android SDK directory.")
@@ -74,7 +65,7 @@ tasks.register('jarAndroid'){
         def d8 = isWindows ? "d8.bat" : "d8"
 
         //dex and desugar files - this requires d8 in your PATH
-        "$d8 $dependencies --min-api 14 --output ${project.name}Android.jar ${project.name}Desktop.jar"
+        "$d8 $dependencies --min-api 14 --output ${projectName}Android.jar ${projectName}Desktop.jar"
                 .execute(null, new File("build/libs")).waitForProcessOutput(System.out, System.err)
     }
 }
@@ -96,15 +87,16 @@ jar{
 }
 
 tasks.register('deploy', Jar){
+    def projectName = project.name
     dependsOn jarAndroid
     dependsOn jar
-    archiveFileName = "${project.name}.jar"
+    archiveFileName = "${projectName}.jar"
 
-    from{ [zipTree("build/libs/${project.name}Desktop.jar"), zipTree("build/libs/${project.name}Android.jar")] }
+    from{ [zipTree("build/libs/${projectName}Desktop.jar"), zipTree("build/libs/${projectName}Android.jar")] }
 
     doLast{
         delete{
-            delete "build/libs/${project.name}Android.jar"
+            delete "build/libs/${projectName}Android.jar"
         }
     }
 }
