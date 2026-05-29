@@ -14,7 +14,14 @@ repositories{
         metadataSources{ artifact() }
     }
 
-    //"Latest" option to depend on BE builds.
+    //If the version is set to 'latest', downloads the latest Mindustry *release* as a dependency
+    ivy{
+        url = 'https://github.com/'
+        patternLayout{artifact '/[organisation]/[module]/releases/[revision]/download/dependencies.jar'}
+        metadataSources{ artifact() }
+    }
+
+    //For depending on the absolute newest commit for Mindustry
     ivy{
         url = 'https://github.com/'
         patternLayout{artifact '/[organisation]/[module]/releases/download/master/[revision].jar'}
@@ -28,15 +35,18 @@ java{
 }
 
 ext{
-    mindustryVersion = 'v158.1' //the build number that this mod is made for
+    // Mindustry version to depend on.
+    // Valid values:
+    // - latest: depend on the latest release of mindustry
+    // - be: depend on the very latest commit of mindustry
+    // - v<number>: depend on a specific commit
+    mindustryVersion = "v158.1"
     isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
 }
 
 dependencies{
-    def useLatest = false //set to "true" to always depend on the newest version of mindustry
-
-    compileOnly useLatest ? "Anuken:MindustryBuilds:latest" : "Anuken:Mindustry:$mindustryVersion"
+    compileOnly mindustryVersion == "be" ? "Anuken:MindustryBuilds:latest" : "Anuken:Mindustry:$mindustryVersion"
 }
 
 tasks.register('jarAndroid'){
