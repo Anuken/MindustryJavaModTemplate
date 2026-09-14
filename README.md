@@ -1,6 +1,10 @@
 # Mindustry Java Mod Template
 A Java Mindustry mod template that works on Android and PC. The Kotlin version of this mod can be seen [here](https://github.com/Anuken/MindustryKotlinModTemplate).
 
+## Publishing a release
+
+A Java mod needs to have at least one published release containing the mod jar file to be available by the mod browser in Mindustry. To create a release, tag a commit and create and publish a release on Github. There is a Github Actions workflow that will automatically build the mod for the release, so you don't need to manually build and upload anything. 
+
 ## Building for Desktop Testing
 
 1. Install JDK **17**.
