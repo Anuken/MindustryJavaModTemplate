@@ -1,6 +1,19 @@
 # Mindustry Java Mod Template
 A Java Mindustry mod template that works on Android and PC. The Kotlin version of this mod can be seen [here](https://github.com/Anuken/MindustryKotlinModTemplate).
 
+## Registering the mod with Mindustry Mod Browser
+
+The list of mods displayed in the Mod Browser is [created automatically](https://github.com/Anuken/MindustryMods). For your mod to be included, the following criteria need to be met:
+
+- Must have a valid `mod.json` / `mod.hjson` file in the root or `assets/` directory.
+- Must have the `mindustry-mod` topic. Do **NOT** use the `mindustry-mod-v7` or `mindustry-mod-v8` topics, they are ignored!
+- Must have a `minGameVersion` >= `136` in `mod.json`.
+- Must have a release published, containing the compiled mod as an asset. This template ensures this asset is created automatically when a release is published, just creating and publishing a release is enough.
+
+### Opting Out
+
+If you would like to remove your mod from the public browser, add `hideBrowser: true` to your `mod.json` / `mod.hjson`.
+
 ## Building for Desktop Testing
 
 1. Install JDK **17**.
@@ -14,7 +27,7 @@ This repository is set up with Github Actions CI to automatically build the mod 
 To get a jar file that works for every platform, do the following:
 1. Make a Github repository with your mod name, and upload the contents of this repo to it. Perform any modifications necessary, then commit and push. 
 2. Check the "Actions" tab on your repository page. Select the most recent commit in the list. If it completed successfully, there should be a download link under the "Artifacts" section. 
-3. Click the download link (should be the name of your repo). This will download a **zipped jar** - **not** the jar file itself [2]! Unzip this file and import the jar contained within in Mindustry. This version should work both on Android and Desktop.
+3. Click the download link (should be the name of your repo). Import the jar contained within in Mindustry. This version should work both on Android and Desktop.
 
 ## Building Locally
 
@@ -35,5 +48,4 @@ Only use `implementation` if you want to package another Java library *with your
 
 --- 
 
-*[1]* *On Linux/Mac it's `./gradlew`, but if you're using Linux I assume you know how to run executables properly anyway.*  
-*[2]: Yes, I know this is stupid. It's a Github UI limitation - while the jar itself is uploaded unzipped, there is currently no way to download it as a single file.*
+*[1]* *On Linux/Mac it's `./gradlew`, but if you're using Linux I assume you know how to run executables properly anyway.* 
