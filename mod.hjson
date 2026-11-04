@@ -8,7 +8,7 @@ name: "base-builder-ai-rework"
 author: "Cedric <•>"
 
 #the fully qualified main class of the mod
-main: "example.ExampleJavaMod"
+main: "com.ceddie.SkirmishAI"
 
 #the mod description as seen in the mod dialog
 description: "Newly improved Base Builder AI(?) Technically, it's a new AI."
