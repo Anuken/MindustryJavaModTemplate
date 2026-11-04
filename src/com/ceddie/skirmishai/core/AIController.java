@@ -2,13 +2,13 @@ package com.ceddie.skirmishai.core;
 
 import mindustry.game.Team;
 
-public class SkirmishAIController {
+public class AIController {
 
     private final Team team;
 
     private float elapsedTime;
 
-    public SkirmishAIController(Team team) {
+    public AIController(Team team) {
         if (team == null) {
             throw new IllegalArgumentException(
                 "AI team cannot be null."
