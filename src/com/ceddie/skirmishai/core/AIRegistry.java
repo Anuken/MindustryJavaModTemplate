@@ -5,7 +5,7 @@ import mindustry.game.Team;
 
 public final class AIRegistry {
 
-    private static final Seq<SkirmishAIController> controllers =
+    private static final Seq<AIController> controllers =
         new Seq<>();
 
     private AIRegistry() {
@@ -16,11 +16,11 @@ public final class AIRegistry {
             return;
         }
 
-        controllers.add(new SkirmishAIController(team));
+        controllers.add(new AIController(team));
     }
 
-    public static SkirmishAIController get(Team team) {
-        for (SkirmishAIController controller : controllers) {
+    public static AIController get(Team team) {
+        for (AIController controller : controllers) {
             if (controller.getTeam() == team) {
                 return controller;
             }
@@ -30,7 +30,7 @@ public final class AIRegistry {
     }
 
     public static void unregister(Team team) {
-        SkirmishAIController controller = get(team);
+        AIController controller = get(team);
 
         if (controller != null) {
             controllers.remove(controller, true);
@@ -40,7 +40,7 @@ public final class AIRegistry {
     public static void update(float delta) {
         if (delta <= 0f) return;
 
-        for (SkirmishAIController controller : controllers) {
+        for (AIController controller : controllers) {
             controller.update(delta);
         }
     }
